@@ -1,0 +1,2 @@
+# purity
+only for test.
