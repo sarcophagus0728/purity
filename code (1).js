@@ -7,19 +7,19 @@ function purifyText(text) {
     let purifiedText = text;
 
     // Rule 1: Adjective/Adverb List Coordinator
-    const regex1 = /([^，、。？！\s…—]{1,})(的|地)(、|，)\s*/g;
+    const regex1 = /([^，、。？！\s…—]{1,})(的|地)(、|，)\s*/;
     purifiedText = purifiedText.replace(regex1, '$1$2 ');
 
     // Rule 2: Atomic Punctuation Annihilator
-    const regex2 = /([^，、。？！\s…—的地]{1,3})(、|，)\s*/g;
+    const regex2 = /([^，、。？！\s…—的地]{1,3})(、|，)\s*/;
     purifiedText = purifiedText.replace(regex2, '$1');
 
     // Rule 3: Single-Character Period Pulverizer
-    const regex3 = /(。)(?=[\u4e00-\u9fa5])/g;
+    const regex3 = /(。)(?=[\u4e00-\u9fa5])/;
     purifiedText = purifiedText.replace(regex3, '');
 
     // Rule 4: Smart Ellipsis Manager
-    const regex4 = /(…|\.\.\.)\s*(?=[^，、。？！\s…—"”」』])/g;
+    const regex4 = /(…|\.\.\.)\s*(?=[^，、。？！\s…—"”」』])/;
     purifiedText = purifiedText.replace(regex4, ' ');
 
     // Rule 5: Subject-Verb Bridge Builder
