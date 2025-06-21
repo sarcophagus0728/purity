@@ -1,0 +1,7 @@
+{
+    "name": "Purifier",
+    "version": "1.0.0",
+    "author": "Igel Porphyra",
+    "description": "An extension to automatically purify punctuation in SillyTavern.",
+    "script": "script.js"
+}
