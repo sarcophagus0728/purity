@@ -1,7 +1,9 @@
 {
     "name": "Purifier",
-    "version": "1.0.0",
-    "author": "Igel Porphyra",
-    "description": "An extension to automatically purify punctuation in SillyTavern.",
-    "script": "script.js"
+    "displayName": "标点净化器 (Punctuation Purifier)",
+    "version": "1.0.1",
+    "author": "Igel Porphyra & AI Partner",
+    "description": "自动净化AI回复中不规范的逗号、顿号和省略号，优化阅读体验。",
+    "script": "script.js",
+    "settings": "settings.html"
 }
