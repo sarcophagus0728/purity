@@ -1,10 +1,5 @@
-// This script is designed to be imported by SillyTavern's global script library.
-// It automatically purifies AI messages upon generation.
-
-// We wrap our entire logic in jQuery(document).ready(), which ensures
-// our code only runs AFTER SillyTavern's main page is fully loaded and ready.
-// This prevents the "Cannot read properties of undefined (reading 'on')" error.
-jQuery(document).ready(function () {
+// This script automatically processes every new AI-generated message to fix punctuation and syntax issues.
+(function() {
     'use strict';
 
     // The core purification function containing our perfected regex rules.
@@ -40,12 +35,28 @@ jQuery(document).ready(function () {
         return purifiedText;
     }
 
-    // This is the core execution block, now safely inside the ready function.
-    SillyTavern.extension_events.on('message_generated', function (data) {
-        if (data && data.message) {
-            data.message = purifyText(data.message);
-        }
-    });
+    // This is the new, robust initialization function.
+    function initializePurifier() {
+        // Check if the critical SillyTavern object is available.
+        if (window.SillyTavern && SillyTavern.extension_events && SillyTavern.extension_events.on) {
+            
+            // If it is, register our event listener.
+            SillyTavern.extension_events.on('message_generated', function (data) {
+                if (data && data.message) {
+                    data.message = purifyText(data.message);
+                }
+            });
 
-    console.log("Automatic Punctuation Purifier is now active and ready.");
-});
+            // And log the success message.
+            console.log("Automatic Punctuation Purifier is now active and ready.");
+
+        } else {
+            // If it's not ready, wait 100 milliseconds and try again.
+            setTimeout(initializePurifier, 100);
+        }
+    }
+
+    // Start the initialization process.
+    initializePurifier();
+
+})();
